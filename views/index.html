@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" href="../stylesheets/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+var socket=io.connect('http://localhost:8080');
+var name= prompt('Enter Your Name');
+socket.emit('join',name);
+socket.on('messages', function(data){
+console.log(data);
+incomingMsg(data);
+});
+function incomingMsg(data){
+console.log(data);
+if(data.sender==='You'){
+	var newText= '<div class="text incoming">'+data.sender+':'+data.msg+'</div>';
+}else{
+	var newText= '<div class="text outgoing">'+data.sender+':'+data.msg+'</div>';
+}
+
+$('.chat-list').append(newText);
+}
+
+function sendMessage(){
+console.log(socket);
+var msg = $('.input-msg').val();
+socket.emit('messages',msg);
+$('.input-msg').val('');
+}
+
+</script>
+</head>
+<body>
+<h1>Welcome To Chat Application</h1>
+<div class="chat-box">
+<div class="chat-list">
+</div>
+<div class="text-control">
+<textarea style="width:100%" class="input-msg" type="text"  rows="3"></textarea>
+<button type="button" onclick="sendMessage()"class="btn btn-primary">Send</button>
+</div>
+</div>
+</body>
+</html>
