@@ -18,21 +18,22 @@ io.on('connection', function(client){
 	client.on('join', function(name){
 		client.nickname=name;
 	});
-	
-	client.on('messages',function(data){	
+
+	client.on('messages',function(data){
 	console.log(data);
 	var obj={
 		msg:data,
 		sender:client.nickname
 	}
+	io.emit('messages', obj);
 	client.broadcast.emit('messages',obj);
 	var senderobj={
 		msg:data,
 		sender:'You'
-	}	
+	}
 	client.emit('messages',senderobj);
 	});
-	
+
 });
 server.listen(8080);
 app.set('views', path.join(__dirname, 'views'));
