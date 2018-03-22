@@ -10,12 +10,13 @@ const app=express();
 const server= require('http').createServer(app);
 
 // const server = express()
-//   .use((req, res) =>  )
+//   .use('/',(req, res) => res.sendFile(INDEX) )
 //   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-server.listen(3000);
+
 const io = socketIO(server);
-app.use('/',function(req,res){
-	res.sendFile(INDEX)
+server.listen(3000);
+app.get('/',function(req,res){
+	res.sendFile(INDEX);
 })
 io.on('connection', (socket) => {
   console.log('Client connected');
