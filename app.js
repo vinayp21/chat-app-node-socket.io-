@@ -4,7 +4,6 @@ const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'views/index.html');
 const app=express();
 const server= require('http').createServer(app);
@@ -12,9 +11,9 @@ const server= require('http').createServer(app);
 // const server = express()
 //   .use('/',(req, res) => res.sendFile(INDEX) )
 //   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
+const PORT= process.env.PORT || 3000
 const io = socketIO(server);
-server.listen(3000);
+server.listen(PORT);
 app.get('/',function(req,res){
 	res.sendFile(INDEX);
 })
