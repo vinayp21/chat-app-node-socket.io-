@@ -25,16 +25,16 @@ io.on("connection", socket => {
   // client.on("join", function(name) {
   //   client.nickname = name;
   // });
-  client.on("messages", function(data) {
-    var obj = {
-      msg: data,
-      sender: client.nickname
-    };
-    client.broadcast.emit("messages", obj);
-    var senderobj = {
-      msg: data,
-      sender: "You"
-    };
-    client.emit("messages", senderobj);
-  });
+  // client.on("messages", function(data) {
+  //   var obj = {
+  //     msg: data,
+  //     sender: client.nickname
+  //   };
+  //   client.broadcast.emit("messages", obj);
+  //   var senderobj = {
+  //     msg: data,
+  //     sender: "You"
+  //   };
+  //   client.emit("messages", senderobj);
+  // });
 });
