@@ -9,9 +9,9 @@ a {
   color: #00b7ff;
 }
 .text-control {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 100%;
+  width: calc(100% - 20px);
 }
 .text-control input {
   border: 1px solid black;
@@ -20,11 +20,9 @@ a {
 }
 
 .chat-box {
-  height: 500px;
   position: relative;
 }
 .chat-list {
-  height: 395px;
   overflow-y: scroll;
 }
 .outgoing {
