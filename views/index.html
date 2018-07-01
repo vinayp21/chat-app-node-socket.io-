@@ -1,27 +1,12 @@
-<!-- <html>
-
-<body>
-  <p id='server-time'></p>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    var socket = io();
-    var el = document.getElementById('server-time');
-    socket.on('news', function (timeString) {
-      el.innerHTML = 'Server time: ' + timeString.data;
-      setTimeout(function () {
-        socket.emit('client', { data: 'hi' });
-      }, 3000)
-    });
-  </script> -->
 <!DOCTYPE html>
 <html>
 
 <head>
   <script src="/socket.io/socket.io.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <!-- <script>
     var socket = io.connect('/');
     var name = prompt('Enter Your Name');
     socket.emit('join', name);
@@ -47,7 +32,7 @@
       $('.input-msg').val('');
     }
 
-  </script>
+  </script> -->
 </head>
 
 <body>
