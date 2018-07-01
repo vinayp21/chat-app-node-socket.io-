@@ -6,10 +6,10 @@
 </head>
 
 <body>
-  <link rel="stylesheet" href="https://vinay-chat-app.herokuapp.com/stylesheets/style.css">
+  <link rel="stylesheet" href="https://chat-app-socketio-node.herokuapp.com/stylesheets/style.css">
   <h1 class="header-text">My Chat Application</h1>
   <h2 class="welcome-text"></h2>
-
+  <p class="typing-info"></p>
   <div class="chat-box">
     <div class="chat-list">
     </div>
@@ -18,46 +18,11 @@
       <button type="button" onclick="sendMessage()" class="btn btn-primary send-btn">Send</button>
     </div>
   </div>
-  <p id='server-time'></p>
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script>
-    var socket = io();
-    var el = document.getElementById('server-time');
-    socket.on('news', function (timeString) {
-      el.innerHTML = 'Server time: ' + timeString.data;
-      setTimeout(function () {
-        socket.emit('client', { data: 'hi' });
-      }, 3000)
-    });
-    var name = prompt('Enter Your Name');
-    $('.welcome-text').html('Welcome ' + name + ',');
-    socket.emit('join', name);
-    socket.on('messages', function (data) {
-      console.log(data);
-      incomingMsg(data);
-    });
-    function incomingMsg(data) {
-      console.log(data);
-      if (data.sender === 'You') {
-        var newText = '<div class="incoming">' + data.sender + '<p class="text">' + data.msg + '</p></div>';
-      } else {
-        var newText = '<div class="outgoing">' + data.sender + ': <p class="text">' + data.msg + '</p></div>';
-      }
-
-      $('.chat-list').append(newText);
-    }
-
-    function sendMessage() {
-      console.log(socket);
-      var msg = $('.input-msg').val();
-      socket.emit('messages', msg);
-      $('.input-msg').val('');
-    }
-  </script>
+  <script src="https://chat-app-socketio-node.herokuapp.com/chat.js"></script>
 
 
 </body>

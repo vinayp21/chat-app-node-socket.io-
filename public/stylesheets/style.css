@@ -12,6 +12,7 @@ a {
   position: fixed;
   bottom: 0;
   width: calc(100% - 20px);
+  padding: 20px 0;
 }
 .text-control input {
   border: 1px solid black;
