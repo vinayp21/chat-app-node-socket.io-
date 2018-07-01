@@ -24,6 +24,7 @@ a {
 }
 .chat-list {
   overflow-y: scroll;
+  height: calc(100vh - 250px);
 }
 .outgoing {
   background-color: #daf7a6;
