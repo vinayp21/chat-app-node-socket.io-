@@ -19,10 +19,10 @@ app.get("/", function(req, res) {
 
 io.on("connection", socket => {
   console.log("Client connected");
-  socket.emit("news", { data: "hello" });
-  socket.on("client", res => {
-    socket.emit("news", { data: res.data });
-  });
+  // socket.emit("news", { data: "hello" });
+  // socket.on("client", res => {
+  //   socket.emit("news", { data: res.data });
+  // });
   socket.on("join", function(name) {
     socket.nickname = name;
   });

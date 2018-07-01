@@ -41,37 +41,9 @@
       $('.input-msg').val('');
     }
   </script>
-  <!-- <script>
-    var socket = io.connect('/');
-    var name = prompt('Enter Your Name');
-    socket.emit('join', name);
-    socket.on('messages', function (data) {
-      console.log(data);
-      incomingMsg(data);
-    });
-    function incomingMsg(data) {
-      console.log(data);
-      if (data.sender === 'You') {
-        var newText = '<div class="text incoming">' + data.sender + ':' + data.msg + '</div>';
-      } else {
-        var newText = '<div class="text outgoing">' + data.sender + ':' + data.msg + '</div>';
-      }
-
-      $('.chat-list').append(newText);
-    }
-
-    function sendMessage() {
-      console.log(socket);
-      var msg = $('.input-msg').val();
-      socket.emit('messages', msg);
-      $('.input-msg').val('');
-    }
-
-  </script> -->
-
 
   <h1>Welcome To Chat Application</h1>
-  <!-- <p id='server-time'></p> -->
+
   <div class="chat-box">
     <div class="chat-list">
     </div>
