@@ -7,14 +7,12 @@ const path = require("path");
 const INDEX = path.join(__dirname, "views/index.html");
 const app = express();
 const server = require("http").createServer(app);
-
-// const server = express()
-//   .use('/',(req, res) => res.sendFile(INDEX) )
-//   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 const PORT = process.env.PORT || 3000;
+
 const io = socketIO(server);
-server.listen(PORT);
-app.get("/", function(req, res) {
+server.listen(3000);
+app.use(express.static(__dirname + "/public"));
+app.get("/", function(req, res, next) {
   res.sendFile(INDEX);
 });
 io.on("connection", socket => {
