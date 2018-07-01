@@ -2,41 +2,55 @@ body {
   padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+.header-text {
+  text-align: center;
+}
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
-.text-control{
-	text-align:center;
-	position:absolute;
-	bottom:0;
-	width:100%;
+.text-control {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
-.chat-box{
-	height:500px;
-	position:relative;
+.text-control input {
+  border: 1px solid black;
+  width: 100%;
+  padding: 5px;
 }
-.chat-list{
-	height:395px;
-	overflow-y:scroll;
+
+.chat-box {
+  height: 500px;
+  position: relative;
 }
-.outgoing{
-	background-color: aliceblue;
-    margin: 10px;
-    font-size: 24px;
-	width:60%;
-	padding:10px;
-	border-radius:10px;
-	clear:both;
+.chat-list {
+  height: 395px;
+  overflow-y: scroll;
 }
-.incoming{
-	background-color: aliceblue;
-	text-align:right;
-    margin: 10px;
-    font-size: 24px;
-	width:60%;
-	float:right;
-	padding:10px;
-	border-radius:10px;
-	clear:both;
+.outgoing {
+  background-color: #daf7a6;
+  margin: 10px;
+  font-size: 24px;
+  width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  clear: both;
+}
+.incoming {
+  background-color: #ffc300;
+  text-align: right;
+  margin: 10px;
+  font-size: 24px;
+  width: 60%;
+  float: right;
+  padding: 10px;
+  border-radius: 10px;
+  clear: both;
+}
+.send-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+.text {
+  font-size: 18px;
 }

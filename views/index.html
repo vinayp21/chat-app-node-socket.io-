@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <meta name="viewport" content="width=device-width">
+</head>
+
 <body>
+  <link rel="stylesheet" href="http://localhost:8000/stylesheets/style.css">
+  <h1 class="header-text">My Chat Application</h1>
+  <h2 class="welcome-text"></h2>
+
+  <div class="chat-box">
+    <div class="chat-list">
+    </div>
+    <div class="text-control ">
+      <input type="text" name="text" class="input-msg" />
+      <button type="button" onclick="sendMessage()" class="btn btn-primary send-btn">Send</button>
+    </div>
+  </div>
   <p id='server-time'></p>
-  <link rel="stylesheet" href="https://chat-app-node-socket.herokuapp.com/stylesheets/style.css">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,6 +34,7 @@
       }, 3000)
     });
     var name = prompt('Enter Your Name');
+    $('.welcome-text').html('Welcome ' + name + ',');
     socket.emit('join', name);
     socket.on('messages', function (data) {
       console.log(data);
@@ -26,9 +43,9 @@
     function incomingMsg(data) {
       console.log(data);
       if (data.sender === 'You') {
-        var newText = '<div class="text incoming">' + data.sender + ':' + data.msg + '</div>';
+        var newText = '<div class="incoming">' + data.sender + '<p class="text">' + data.msg + '</p></div>';
       } else {
-        var newText = '<div class="text outgoing">' + data.sender + ':' + data.msg + '</div>';
+        var newText = '<div class="outgoing">' + data.sender + ': <p class="text">' + data.msg + '</p></div>';
       }
 
       $('.chat-list').append(newText);
@@ -42,16 +59,7 @@
     }
   </script>
 
-  <h1>Welcome To Chat Application</h1>
 
-  <div class="chat-box">
-    <div class="chat-list">
-    </div>
-    <div class="text-control">
-      <textarea style="width:100%" class="input-msg" type="text" rows="3"></textarea>
-      <button type="button" onclick="sendMessage()" class="btn btn-primary">Send</button>
-    </div>
-  </div>
 </body>
 
 </html>
