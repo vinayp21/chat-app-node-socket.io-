@@ -36,4 +36,7 @@ io.on("connection", socket => {
     };
     socket.emit("messages", senderobj);
   });
+  socket.on("typing", function(name) {
+    socket.broadcast.emit("typing", name);
+  });
 });

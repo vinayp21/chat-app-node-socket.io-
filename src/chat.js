@@ -13,6 +13,9 @@ socket.emit("join", name);
 socket.on("messages", function(data) {
   incomingMsg(data);
 });
+socket.on("typing", function(name) {
+  $(".typing-info").html("<span>" + name + " is typing...</span>");
+});
 function incomingMsg(data) {
   console.log(data);
   if (data.sender === "You") {
@@ -42,7 +45,7 @@ function sendMessage() {
 }
 
 $(".input-msg").bind("keypress", function() {
-  $(".typing-info").html("<span>" + name + " is typing...</span>");
+  socket.emit("typing", name);
 });
 $(".input-msg").bind("focusout", function() {
   $(".typing-info").html("");
