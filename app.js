@@ -6,15 +6,16 @@ const path = require("path");
 
 const INDEX = path.join(__dirname, "views/index.html");
 const app = express();
-const server = require("http").createServer(app);
-const PORT = process.env.PORT || 3000;
 
+const server = require("http").createServer(app);
+
+const PORT = process.env.PORT || 3000;
 const io = socketIO(server);
-server.listen(3000);
-app.use(express.static(__dirname + "/public"));
-app.get("/", function(req, res, next) {
+server.listen(PORT);
+app.get("/", function(req, res) {
   res.sendFile(INDEX);
 });
+
 io.on("connection", socket => {
   console.log("Client connected");
   socket.emit("news", { data: "hello" });
