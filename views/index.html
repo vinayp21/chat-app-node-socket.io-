@@ -17,6 +17,12 @@
         socket.emit('client', { data: 'hi' });
       }, 3000)
     });
+    var name = prompt('Enter Your Name');
+    socket.emit('join', name);
+    socket.on('messages', function (data) {
+      console.log(data);
+      //incomingMsg(data);
+    });
   </script>
   <!-- <script>
     var socket = io.connect('/');
