@@ -21,8 +21,25 @@
     socket.emit('join', name);
     socket.on('messages', function (data) {
       console.log(data);
-      //incomingMsg(data);
+      incomingMsg(data);
     });
+    function incomingMsg(data) {
+      console.log(data);
+      if (data.sender === 'You') {
+        var newText = '<div class="text incoming">' + data.sender + ':' + data.msg + '</div>';
+      } else {
+        var newText = '<div class="text outgoing">' + data.sender + ':' + data.msg + '</div>';
+      }
+
+      $('.chat-list').append(newText);
+    }
+
+    function sendMessage() {
+      console.log(socket);
+      var msg = $('.input-msg').val();
+      socket.emit('messages', msg);
+      $('.input-msg').val('');
+    }
   </script>
   <!-- <script>
     var socket = io.connect('/');
